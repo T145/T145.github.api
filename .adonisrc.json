@@ -20,7 +20,6 @@
     "@adonisjs/core"
   ],
   "metaFiles": [
-    ".env",
     ".adonisrc.json"
   ]
 }
