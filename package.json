@@ -4,26 +4,27 @@
   "private": true,
   "scripts": {
     "build": "node ace build --production",
+    "deploy": "git push heroku master",
     "lint": "eslint . --ext=.ts",
     "sort": "sort-package-json",
-    "start": "node ace serve --watch",
-    "deploy": "git push heroku master"
+    "start": "node ace serve --watch"
   },
   "dependencies": {
     "@adonisjs/ace": "^6.0.0",
     "@adonisjs/core": "^5.0.0-preview-rc",
     "@adonisjs/fold": "^6.0.0",
+    "@types/proxy-addr": "^2.0.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^2.0.0",
+    "@typescript-eslint/parser": "^4.1.0",
     "adonis-preset-ts": "^1.0.4",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "latest",
     "eslint-plugin-adonis": "^1.0.15",
-    "eslint-plugin-import": "latest",
     "eslint-plugin-prettier": "latest",
     "pino-pretty": "^4.2.1",
     "prettier": "latest",
