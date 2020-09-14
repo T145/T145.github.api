@@ -6,7 +6,8 @@
     "build": "node ace build --production",
     "lint": "eslint . --ext=.ts",
     "sort": "sort-package-json",
-    "start": "node ace serve --watch"
+    "start": "node ace serve --watch",
+    "deploy": "git push heroku build:master"
   },
   "dependencies": {
     "@adonisjs/ace": "^6.0.0",
