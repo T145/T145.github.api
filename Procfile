@@ -1,1 +1,1 @@
-web: ENV_SILENT=true node server.js
+web: ENV_SILENT=true npx ts-node server.ts
