@@ -14,7 +14,8 @@
     "@adonisjs/fold": "^6.0.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",
-    "source-map-support": "^0.5.19"
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.0.2"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^2.0.0",
@@ -27,7 +28,6 @@
     "pino-pretty": "^4.2.1",
     "prettier": "latest",
     "sort-package-json": "^1.44.0",
-    "typescript": "^4.0.2",
     "youch": "^2.0.10",
     "youch-terminal": "^1.0.0"
   },
