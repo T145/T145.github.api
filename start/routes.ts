@@ -31,7 +31,7 @@ Route.get('/metalchests', async () => {
 
     const downloadsBadge = await axios({
       method: 'get',
-      url: `http://cf.way2muchnoise.eu/${METAL_CHESTS_ID}.svg?badge_style=for_the_badge`,
+      url: `https://cf.way2muchnoise.eu/full_${METAL_CHESTS_ID}_downloads.svg?badge_style=for_the_badge`,
       responseType: 'text',
     });
 
