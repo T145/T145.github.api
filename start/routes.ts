@@ -21,40 +21,29 @@
 import Route from '@ioc:Adonis/Core/Route';
 import axios from 'axios';
 
-function numberWithCommas(x: number) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
 Route.get('/', async () => {
   return { hello: 'world' };
 });
 
 Route.get('/metalchests', async () => {
   try {
-    interface GameVersion {
-      gameVersion: string;
-      projectFileId: number;
-      projectFileName: string;
-      fileType: number;
-      gameVersionFlavor: undefined;
-    }
+    const METAL_CHESTS_ID = 290145;
 
-    const resp = await axios({
+    const downloadsBadge = await axios({
       method: 'get',
-      url: 'https://addons-ecs.forgesvc.net/api/v2/addon/290145',
-      responseType: 'json',
+      url: `http://cf.way2muchnoise.eu/${METAL_CHESTS_ID}.svg?badge_style=for_the_badge`,
+      responseType: 'text',
     });
-    const data = resp.data;
-    const gameVersions: Array<GameVersion> = data.gameVersionLatestFiles;
-    const versions: string[] = [];
 
-    gameVersions.forEach(version => {
-      versions.push(version.gameVersion);
+    const versionsBadge = await axios({
+      method: 'get',
+      url: `http://cf.way2muchnoise.eu/versions/${METAL_CHESTS_ID}.svg?badge_style=for_the_badge`,
+      responseType: 'text',
     });
 
     return {
-      downloadCount: numberWithCommas(data.downloadCount),
-      versions: versions,
+      downloadsBadge: downloadsBadge.data,
+      versionsBadge: versionsBadge.data,
     };
   } catch (err) {
     return { error: err };
