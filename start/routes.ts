@@ -19,7 +19,9 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route';
+import Env from '@ioc:Adonis/Core/Env';
 import axios from 'axios';
+import UserAgent from 'user-agents';
 
 Route.get('/', async () => {
   return { hello: 'world' };
@@ -27,18 +29,24 @@ Route.get('/', async () => {
 
 Route.get('/metalchests', async () => {
   try {
-    const METAL_CHESTS_ID = 290145;
+    const metalChestsId = 290145;
 
     const downloadsBadge = await axios({
       method: 'get',
-      url: `http://cf.way2muchnoise.eu/full_${METAL_CHESTS_ID}_downloads.svg?badge_style=for_the_badge`,
+      url: `http://cf.way2muchnoise.eu/full_${metalChestsId}_downloads.svg?badge_style=for_the_badge`,
       responseType: 'text',
+      headers: {
+        'User-Agent': new UserAgent().userAgent,
+      },
     });
 
     const versionsBadge = await axios({
       method: 'get',
-      url: `http://cf.way2muchnoise.eu/versions/${METAL_CHESTS_ID}.svg?badge_style=for_the_badge`,
+      url: `http://cf.way2muchnoise.eu/versions/${metalChestsId}.svg?badge_style=for_the_badge`,
       responseType: 'text',
+      headers: {
+        'User-Agent': new UserAgent().userAgent,
+      },
     });
 
     return {
@@ -46,6 +54,8 @@ Route.get('/metalchests', async () => {
       versionsBadge: versionsBadge.data,
     };
   } catch (err) {
-    return err;
+    return {
+      error: Env.get('NODE_ENV') === 'development' ? err.message : 405,
+    };
   }
 });
