@@ -46,6 +46,6 @@ Route.get('/metalchests', async () => {
       versionsBadge: versionsBadge.data,
     };
   } catch (err) {
-    return { error: err };
+    return err;
   }
 });
