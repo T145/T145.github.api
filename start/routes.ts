@@ -24,7 +24,14 @@ import axios from 'axios';
 import UserAgent from 'user-agents';
 
 Route.get('/', async () => {
-  return { hello: 'world' };
+  return `
+_______________   _____ .________
+\\__    ___/_   | /  |  ||   ____/
+  |    |   |   |/   |  ||____  \\
+  |    |   |   /    ^   /       \\
+  |____|   |___\\____   /______  /
+                    |__|      \\/
+  `;
 });
 
 Route.get('/metalchests', async () => {
