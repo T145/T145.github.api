@@ -30,13 +30,14 @@ Route.get('/', async () => {
 Route.get('/metalchests', async () => {
   try {
     const metalChestsId = 290145;
+    const userAgent = new UserAgent({ deviceCategory: 'desktop' });
 
     const downloadsBadge = await axios({
       method: 'get',
       url: `http://cf.way2muchnoise.eu/full_${metalChestsId}_downloads.svg?badge_style=for_the_badge`,
       responseType: 'text',
       headers: {
-        'User-Agent': new UserAgent().userAgent,
+        'User-Agent': userAgent.userAgent,
       },
     });
 
@@ -45,7 +46,7 @@ Route.get('/metalchests', async () => {
       url: `http://cf.way2muchnoise.eu/versions/${metalChestsId}.svg?badge_style=for_the_badge`,
       responseType: 'text',
       headers: {
-        'User-Agent': new UserAgent().userAgent,
+        'User-Agent': userAgent.random().userAgent,
       },
     });
 
